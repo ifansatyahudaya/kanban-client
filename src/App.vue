@@ -7,28 +7,34 @@
     </Navbar>
 
     <div class="container">
-      <ul class="form-login">
-        <li v-if="currentPage == 'login' || currentPage == 'register'"><button @click="currentPage='login'" class="btn btn-primary">Login</button></li>
-        <li v-if="currentPage == 'login' || currentPage == 'register'"><button @click="currentPage='register'" class="btn btn-primary">Register</button></li>
-      </ul>
-      <LoginForm v-if="currentPage == 'login'"
-        v-on:loginPayload="loginFunction"
-        v-on:refectchTasks="fetchAllTask">
+      <div class="row justify-content-md-center">
 
-      </LoginForm>
+        <div class="col-md-auto">
+          <ul class="form-login">
+            <li v-if="currentPage == 'login' || currentPage == 'register'"><button @click="currentPage='login'" class="btn btn-link">Login</button></li>
+            <li v-if="currentPage == 'login' || currentPage == 'register'"><button @click="currentPage='register'" class="btn btn-link">Register</button></li>
+          </ul>
+          <LoginForm v-if="currentPage == 'login'"
+            v-on:loginPayload="loginFunction"
+            v-on:refectchTasks="fetchAllTask">
 
-      <RegisterForm v-else-if="currentPage == 'register'"
-        v-on:registerPayload="registerFunction">
-      </RegisterForm>
+          </LoginForm>
 
-      <Home v-else v-bind:tasks="tasks"
-        v-bind:currentUser="currentUser"
-        v-on:addTaskPayload="addTask"
-        v-on:onDelete="deleteTask"
-        v-on:onUpdateTask="onUpdateTask"
-        v-on:onMoveCategory="onMoveCategory">
-      </Home>
+          <RegisterForm v-else-if="currentPage == 'register'"
+            v-on:registerPayload="registerFunction">
+          </RegisterForm>
+
+          <Home v-else v-bind:tasks="tasks"
+            v-bind:currentUser="currentUser"
+            v-on:addTaskPayload="addTask"
+            v-on:onDelete="deleteTask"
+            v-on:onUpdateTask="onUpdateTask"
+            v-on:onMoveCategory="onMoveCategory">
+          </Home>
+        </div>
+      </div>
     </div>
+
   </span>
 </template>
 

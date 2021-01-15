@@ -184,6 +184,13 @@ nav .links-icon {
   display: none;
 }
 
+ul.form-login {
+  list-style: none;
+  display: flex;
+  padding: 10px;
+
+}
+
 /* el: '#todo',
 data : {
   tasks

@@ -9,7 +9,7 @@
 
       </a>
       <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <li v-if="currentPage != 'login'">
+        <li v-if="currentPage != 'login' && currentPage != 'register'">
           <a v-on:click="logout" class="dropdown-item" href="#">Logout</a>
         </li>
       </ul>

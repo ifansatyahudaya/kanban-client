@@ -1,6 +1,6 @@
 <template>
   <div id="form-register">
-    <h1>Register</h1>
+    <h1>Register Form</h1>
     <form @submit.prevent="register">
       <div class="form-group">
         <input v-model="name" type="text" placeholder="Name" autofocus="autofocus" class="form-control">
