@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
+
 export default {
   name: 'Tasks',
   props: ['todo', 'currentUser', 'availableCategories'],
@@ -59,7 +61,20 @@ export default {
       this.name = null
     },
     onDelete() {
-      this.$emit("onDelete", this.$props.todo.id)
+      if (this.todo.UserId == this.currentUser.id) {
+        this.$emit("onDelete", this.$props.todo.id)
+        Swal.fire(
+          'Success!',
+          'Your task has been deleted!',
+          'success'
+        )
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'You dont have authorize to do that!'
+        })
+      }
     },
     onEdit() {
       if (this.todo.UserId == this.currentUser.id) {

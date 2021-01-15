@@ -16,8 +16,9 @@
           </ul>
           <LoginForm v-if="currentPage == 'login'"
             v-on:loginPayload="loginFunction"
-            v-on:refectchTasks="fetchAllTask">
-
+            v-on:refectchTasks="fetchAllTask"
+            v-on:currentPage="googleAfterLogin"
+            v-on:pasIdToken="googleAfterLogin">
           </LoginForm>
 
           <RegisterForm v-else-if="currentPage == 'register'"
@@ -44,6 +45,7 @@ import LoginForm from "./components/LoginForm"
 import Home from "./components/Home"
 import Navbar from './components/Navbar'
 import RegisterForm from "./components/RegisterForm"
+import Swal from 'sweetalert2'
 
 
 export default {
@@ -64,6 +66,27 @@ export default {
     RegisterForm
   },
   methods: {
+    // upadate currentPage after google login
+    googleAfterLogin(id_token) {
+      axios({
+        method: 'post',
+        url: 'http://localhost:3000/googleLogin',
+        data: {id_token}
+      })
+      .then((response) => {
+        console.log("RESPON THEN GOOGLE LOGIN", response);
+        localStorage.setItem("access_token", response.data.access_token)
+        console.log(response);
+        // this.currentUser = response.data._user
+        this.currentPage = 'home'
+        this.fetchAllTask()
+      })
+      .catch((error) => {
+        console.log("ERROR LOGIN GOOGLE", error);
+        this.onSignInError(error)
+      })
+    },
+
     // registerFunction
     registerFunction(payload) {
       axios({
@@ -111,6 +134,11 @@ export default {
       localStorage.clear()
       this.currentUser = {}
       this.currentPage = 'login'
+
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
     },
 
     // findAll tasks
