@@ -54,6 +54,11 @@ export default {
         CategoryId: this.$props.todo.CategoryId,
         name: this.name
       }, this.cancelEdit)
+
+      Swal.fire({
+        icon: 'success',
+        text: 'Task has been updated!'
+      })
     },
     cancelEdit() {
       console.log(this.$props.availableCategories)
@@ -62,12 +67,25 @@ export default {
     },
     onDelete() {
       if (this.todo.UserId == this.currentUser.id) {
-        this.$emit("onDelete", this.$props.todo.id)
-        Swal.fire(
-          'Success!',
-          'Your task has been deleted!',
-          'success'
-        )
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+            this.$emit("onDelete", this.$props.todo.id)
+          }
+        })
+
       } else {
         Swal.fire({
           icon: 'error',
@@ -87,6 +105,11 @@ export default {
       this.$emit("onMoveCategory", {
         id: this.$props.todo.id,
         CategoryId: categoryId
+      })
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Move task success!'
       })
     }
   }

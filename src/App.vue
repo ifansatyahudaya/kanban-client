@@ -77,13 +77,23 @@ export default {
         console.log("RESPON THEN GOOGLE LOGIN", response);
         localStorage.setItem("access_token", response.data.access_token)
         console.log(response);
-        // this.currentUser = response.data._user
+        this.currentUser = response.data._user
         this.currentPage = 'home'
         this.fetchAllTask()
+
+        Swal.fire({
+          icon: 'success',
+          text: 'Login success!'
+        })
       })
       .catch((error) => {
         console.log("ERROR LOGIN GOOGLE", error);
         this.onSignInError(error)
+
+        Swal.fire({
+          icon: 'error',
+          text: 'Internal server error'
+        })
       })
     },
 
@@ -99,10 +109,19 @@ export default {
         }
       })
       .then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Register Successfull!',
+
+        })
         this.currentPage = 'login'
       })
-      .catch(() => {
-        console.log(error);
+      .catch((err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Wrong input!',
+          text: err.response.data
+        })
       })
     },
 
@@ -123,9 +142,16 @@ export default {
         this.currentUser = response.data._user
         this.currentPage = 'home'
         this.fetchAllTask()
+        Swal.fire({
+          icon: 'success',
+          title: 'Login success!'
+        })
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Email or password must be filled!'
+        })
       })
     },
 
@@ -139,6 +165,11 @@ export default {
       auth2.signOut().then(function () {
         console.log('User signed out.');
       });
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Logout success!'
+      })
     },
 
     // findAll tasks
@@ -178,9 +209,18 @@ export default {
       .then((response) => {
         this.fetchAllTask()
         payload.clearName()
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Task added!'
+        })
       })
       .catch((error) => {
         console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Task name must be filled!'
+        })
       })
     },
 
