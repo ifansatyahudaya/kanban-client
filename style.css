@@ -1,0 +1,198 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+/*
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  background-color:slateblue;
+  align-items: center;
+}
+
+nav .links ul {
+  display: flex;
+
+}
+
+nav .links ul li {
+  margin-left: 15px;
+  list-style: none;
+}
+
+nav .links ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+nav .logo {
+  margin-left: 20x;
+}
+
+nav .links-icon {
+  margin-right: 20px;
+}
+
+.card-margintop {
+  padding-top: 10px;
+}
+
+.container .row .container-backlog {
+  background-color: lightblue;
+} */
+
+/* .container {
+  background-color: darkcyan;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+
+.box {
+  padding: 20px;
+  font-size: 4em;
+  color: #ffffff;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}
+ */
+
+
+.custom-nav {
+  background-color: #45719b;
+}
+
+.custom-nav .dropdown-menu {
+  right: 20px;
+  left: auto;
+}
+
+.custom-nav .dropdown-toggle {
+  color: hsla(0,0%,100%,.7);
+  margin-left: .5rem;
+}
+
+.boards {
+  display: flex;
+  flex-direction: row;
+}
+
+.board {
+  min-width: 300px;
+  max-height: 700px;
+  background-color: #ebecf0;
+  margin: 15px 10px;
+  border-radius: 4px 4x 0px 0px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.board-body {
+  overflow: scroll;
+}
+
+.board-header {
+  background-color: #45719b;
+  color: #fff;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.board-add-task-wrapper {
+  background-color: #e1e2e4;
+  padding: 10px;
+}
+
+.board-add-task-wrapper button.add-task-btn {
+  font-size: 20px;
+  border: 0;
+  background: none;
+  color: #777777;
+}
+
+.board-add-task-wrapper button.add-task-btn:hover {
+  color: #333333;
+}
+
+
+.custom-card {
+  border-radius: 3px;
+  border: 0;
+  border-bottom: 1px solid #a7a7a7;
+  border-right: 1px solid #dedede;
+  margin: 15px;
+  padding: 10px;
+  font-size: 18px;
+  color: #41464b;
+}
+
+.custom-card.active {
+  background-color: #fffddb;
+}
+
+.custom-card-footer {
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(0,0,0,.5);
+  display: flex;
+  flex-direction: row;
+}
+
+.custom-card-footer .custom-card-footer-info.hide {
+  visibility: hidden;
+}
+
+.custom-card-footer:hover .custom-card-footer-info.hide {
+  visibility: visible;
+}
+
+.custom-card-footer-info {
+  flex: 1;
+}
+
+.custom-card-footer-info:nth-child(2) {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.card-button {
+  margin: 5px;
+  cursor: pointer;
+}
+
+.card-button.dropdown-toggle::after {
+  display: none;
+}
+
+/* el: '#todo',
+data : {
+  tasks
+  categoryId:
+  newTask: {}
+
+  methods: {
+    this.cateegoryId
+    this.newTask.name
+    add
+  }
+} */
